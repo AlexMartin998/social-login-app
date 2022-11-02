@@ -1,0 +1,7 @@
+node_modules/
+dist/
+
+.env
+notes*
+src2/
+src2
