@@ -1,11 +1,8 @@
 import passport from 'passport';
 import passportGoogle from 'passport-google-oauth20';
 import passportGithub from 'passport-github2';
-import passportFacebook from 'passport-facebook';
 
 import {
-  FACEBOOK_CLIENT_ID,
-  FACEBOOK_CLIENT_SECRET,
   GITHUB_CLIENT_ID,
   GITHUB_CLIENT_SECRET,
   GOOGLE_CLIENT_ID,
@@ -14,7 +11,6 @@ import {
 
 const GoogleStrategy = passportGoogle.Strategy;
 const GitHubStrategy = passportGithub.Strategy;
-const FacebookStrategy = passportFacebook.Strategy;
 
 // // Google
 passport.use(
@@ -47,21 +43,6 @@ passport.use(
       clientID: GITHUB_CLIENT_ID,
       clientSecret: GITHUB_CLIENT_SECRET,
       callbackURL: '/auth/github/callback',
-    },
-
-    function (accessToken, refreshToken, profile, done) {
-      done(null, profile);
-    }
-  )
-);
-
-// // Facebook
-passport.use(
-  new FacebookStrategy(
-    {
-      clientID: FACEBOOK_CLIENT_ID,
-      clientSecret: FACEBOOK_CLIENT_SECRET,
-      callbackURL: '/auth/facebook/callback',
     },
 
     function (accessToken, refreshToken, profile, done) {
